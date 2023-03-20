@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/18 23:26:59 by acarneir          #+#    #+#             */
-/*   Updated: 2023/03/20 00:35:42 by acarneir         ###   ########.fr       */
+/*   Created: 2023/03/19 23:13:51 by acarneir          #+#    #+#             */
+/*   Updated: 2023/03/19 23:54:35 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#include "Contact.hpp"
 
-int main(void){
-	PhoneBook phone_Book;
-	phone_Book.run();
-	return 0;
+Contact::Contact(){}
+Contact::~Contact(){}
+
+Contact::Contact(std::string first_name, std::string last_name,
+		std::string nickname, std::string phone_number,
+		std::string darkest_secret){
+	this->first_name = first_name;
+	this->last_name = last_name;
+	this->nickname = nickname;
+	this->phone_number = phone_number;
+	this->darkest_secret = darkest_secret;
 }

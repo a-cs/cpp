@@ -6,7 +6,7 @@
 #    By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/18 23:02:15 by acarneir          #+#    #+#              #
-#    Updated: 2023/01/18 23:32:18 by acarneir         ###   ########.fr        #
+#    Updated: 2023/03/20 00:35:18 by acarneir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,12 @@ NAME = phoneBook
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = main.cpp
+SRC = main.cpp \
+		Contact.cpp \
+		PhoneBook.cpp
+		
+INCLUDE = Contact.hpp \
+			PhoneBook.hpp
 
 OBJ_DIR = objs
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
@@ -25,7 +30,7 @@ all: $(NAME)
 $(NAME): $(OBJ_DIR) $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
-$(OBJ_DIR)/%.o: %.c
+$(OBJ_DIR)/%.o: %.c $(INCLUDE)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR):
