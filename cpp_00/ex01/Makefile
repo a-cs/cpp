@@ -6,7 +6,7 @@
 #    By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/18 23:02:15 by acarneir          #+#    #+#              #
-#    Updated: 2023/03/20 00:35:18 by acarneir         ###   ########.fr        #
+#    Updated: 2023/03/21 23:28:32 by acarneir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@
 NAME = phoneBook
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
+VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./phoneBook
 
 SRC = main.cpp \
 		Contact.cpp \
@@ -43,3 +44,8 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+valgrind: all
+	@$(VALGRIND)
+
+v: valgrind

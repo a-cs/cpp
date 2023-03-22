@@ -6,7 +6,7 @@
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 23:56:26 by acarneir          #+#    #+#             */
-/*   Updated: 2023/03/20 00:39:20 by acarneir         ###   ########.fr       */
+/*   Updated: 2023/03/21 23:18:01 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ class PhoneBook {
 		void run();
 	private:
 		int			index = 0;
-		void		add_contact();
+		void		add();
+		void		search();
+		void		display_line(int index, Contact contact);
+		std::string trucate(std::string str);
 		std::string	get_input(std::string str);
 };
 
