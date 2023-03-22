@@ -6,7 +6,7 @@
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 23:56:23 by acarneir          #+#    #+#             */
-/*   Updated: 2023/03/22 00:15:30 by acarneir         ###   ########.fr       */
+/*   Updated: 2023/03/22 00:52:01 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,23 +91,19 @@ void PhoneBook::run(){
 
 	std::cout<< "\033c";
 	std::cout<< "Welcome to My Awesome PhoneBook!\n";
-	while(input != "EXIT"){	
+	while(!std::cin.eof() && input != "EXIT"){
+		std::cout<<"eof = " << std::cin.eof() << "|\n";
 		std::cout<< "Please, choose an option: ADD, SEARCH, EXIT\n";
 		getline(std::cin,input);
-		// std::cout << "input.compare('ADD') == 0 " << (input.compare("ADD") == 0) << "\n";
 		if (input.compare("ADD") == 0)
 			add();
 		else if (input.compare("SEARCH") == 0)
 			search();
-		else if (input.compare("EXIT") == 0)
+		else if (std::cin.eof() || input.compare("EXIT") == 0)
 			std::cout<<"Thank you for using My Awesome PhoneBook! Bye Bye!\n";
-		//bug loop infinito no crtl + d
 		else {
-			// std::cout<< input << "|\n";
-			// input="ABC";
-			// std::cout<< input << "|\n";
 			std::cout<<"Invalid option, try again!\n";
 		}
 	}
-	exit(0);
+	// exit(0);
 }
