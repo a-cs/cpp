@@ -6,7 +6,7 @@
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 22:07:52 by acarneir          #+#    #+#             */
-/*   Updated: 2023/03/27 22:25:41 by acarneir         ###   ########.fr       */
+/*   Updated: 2023/03/29 22:08:11 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 #include <iostream>
 
 Zombie::Zombie(){}
+
+Zombie::Zombie( std::string name ) {
+	this->name = name;
+}
 
 Zombie::~Zombie(){
 	std::cout << this->get_name() << " has died!\n";

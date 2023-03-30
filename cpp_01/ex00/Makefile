@@ -6,7 +6,7 @@
 #    By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/27 22:05:06 by acarneir          #+#    #+#              #
-#    Updated: 2023/03/27 22:45:11 by acarneir         ###   ########.fr        #
+#    Updated: 2023/03/29 22:04:29 by acarneir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,9 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./brainz
 
 SRC = main.cpp \
-		Zombie.cpp
+		Zombie.cpp \
+		newZombie.cpp \
+		randomChump.cpp
 		
 INCLUDE = Zombie.hpp
 
