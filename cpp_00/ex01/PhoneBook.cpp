@@ -6,7 +6,7 @@
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 23:56:23 by acarneir          #+#    #+#             */
-/*   Updated: 2023/03/23 00:36:38 by acarneir         ###   ########.fr       */
+/*   Updated: 2023/05/15 22:53:00 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,11 @@ void	PhoneBook::display_line(int index, Contact contact){
 }
 
 void	PhoneBook::display_contact(Contact contact){
-	std::cout << "First Name:" << contact.first_name << "\n";
-	std::cout << "Last Name:" << contact.last_name << "\n";
-	std::cout << "Nickname:" << contact.nickname << "\n";
-	std::cout << "Phone number:" << contact.phone_number << "\n";
-	std::cout << "Darkestsecret:" << contact.darkest_secret << "\n";
-	std::cout <<"\n";
+	std::cout << "First Name: " << contact.first_name << "\n";
+	std::cout << "Last Name: " << contact.last_name << "\n";
+	std::cout << "Nickname: " << contact.nickname << "\n";
+	std::cout << "Phone number: " << contact.phone_number << "\n";
+	std::cout << "Darkest secret: " << contact.darkest_secret << "\n";
 }
 
 
@@ -89,7 +88,7 @@ void PhoneBook::search(){
 	std::cout <<"\n";
 	for (int i = 0; (i < 8 && !this->contacts[i].first_name.empty()); i++)
 		display_line(i, this->contacts[i]);
-	std::cout << "\nSelect an index to display the contact information:\n";
+	std::cout << "Select an index to display the contact information:\n";
 	getline(std::cin, input);
 	std::stringstream sstr(input);
 	sstr >> i;
