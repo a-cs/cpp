@@ -6,13 +6,14 @@
 #    By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 21:23:33 by acarneir          #+#    #+#              #
-#    Updated: 2023/04/05 23:07:57 by acarneir         ###   ########.fr        #
+#    Updated: 2023/05/31 23:12:45 by acarneir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = harl
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
+VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$(NAME)
 
 SRC = main.cpp \
 		Harl.cpp
@@ -40,3 +41,8 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+valgrind: all
+	@$(VALGRIND)
+
+v: valgrind

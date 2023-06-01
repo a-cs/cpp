@@ -6,7 +6,7 @@
 #    By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/04 20:04:24 by acarneir          #+#    #+#              #
-#    Updated: 2023/04/04 21:41:00 by acarneir         ###   ########.fr        #
+#    Updated: 2023/05/31 22:42:24 by acarneir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,8 @@ $(OBJ_DIR):
 
 clean:
 	rm -rf $(OBJ_DIR)
+	rm -rf file
+	rm -rf file.replace
 
 fclean: clean
 	rm -f $(NAME)

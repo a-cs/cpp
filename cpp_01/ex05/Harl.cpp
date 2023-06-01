@@ -6,7 +6,7 @@
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 21:30:06 by acarneir          #+#    #+#             */
-/*   Updated: 2023/04/05 22:53:05 by acarneir         ###   ########.fr       */
+/*   Updated: 2023/05/31 23:22:03 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void Harl::error( void ) {
 void	Harl::complain( std::string level ){
 	std::string	option[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	void (Harl::*fp[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
-	for(int i=0; i < option->length(); i++){
+	for(int i=0; i < 4; i++){
 		if(option[i] == level)
 			return (this->*fp[i])();
 	}
