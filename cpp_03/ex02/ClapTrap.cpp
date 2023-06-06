@@ -96,7 +96,7 @@ void ClapTrap::beRepaired(unsigned int amount){
 	if(this->energyPoints > 0 && this->hitPoints > 0){
 		this->energyPoints--;
 		this->hitPoints += amount;
-		std::cout << "ClapTrap " << this->name << " was repaired, revovering "<<
+		std::cout << "ClapTrap " << this->name << " was repaired, recovering "<<
 		std::to_string(amount) << " hit points! The current hit points is "<< this->hitPoints <<".\n";
 	}
 	else {
