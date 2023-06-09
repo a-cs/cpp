@@ -4,10 +4,9 @@
 
 int	main( void ) {
 
-	// AAnimal invalidAnimal = new AAnimal();
-	int 	size = 6;
+	int 	size = 2;
 	AAnimal *animals[size];
-	
+
 	
 	std::cout << "-----Creating Animals-----\n";
 
@@ -17,9 +16,16 @@ int	main( void ) {
 		animals[i] = new Cat();
 
 
+	std::cout << "\n\n-----Testing deep copy-----\n";
+	Cat *cat = (Cat *)animals[size-1];
+	Cat copyCat(*cat);
+	std::cout << "\n----After setting a different value for copy-----\n";
+	copyCat.setIdea(1, "rest");
+	std::cout << "Cat>	" << cat->getBrain()->getIdea(1) << "\n";
+	std::cout << "Copy> 	" << copyCat.getBrain()->getIdea(1) << "\n";
+
 	std::cout << "\n\n-----Deleting Animals-----\n";
 	for(int i = 0; i < size; i++)
 		delete animals[i];
-
 	return 0;
 }
