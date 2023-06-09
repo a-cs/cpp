@@ -11,7 +11,7 @@ Dog::~Dog() {
 	delete this->brain;
 }
 
-Dog::Dog(Dog const &obj){
+Dog::Dog(Dog const &obj): AAnimal(obj){
 	std::cout << this->type << " copy constructor called.\n";
 	*this = obj;
 }
