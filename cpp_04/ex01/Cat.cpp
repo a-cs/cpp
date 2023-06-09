@@ -19,6 +19,7 @@ Cat::Cat(Cat const &obj){
 Cat &Cat::operator=(Cat const &obj){
 	if(this != &obj){
 		this->type = obj.getType();
+		this->brain = new Brain(*obj.brain);
 	}
 	std::cout << this->type << " copy assignment operator called.\n";
 	return (*this);
@@ -30,4 +31,8 @@ void Cat::makeSound() const{
 
 Brain	*Cat::getBrain() const{
 	return this->brain;
+}
+
+void Cat::setIdea(int index, std::string idea) const{
+	this->brain->ideas[index] = idea;
 }

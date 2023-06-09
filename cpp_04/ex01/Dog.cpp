@@ -19,6 +19,7 @@ Dog::Dog(Dog const &obj){
 Dog &Dog::operator=(Dog const &obj){
 	if(this != &obj){
 		this->type = obj.getType();
+		this->brain = new Brain(*obj.brain);
 	}
 	std::cout << this->type << " copy assignment operator called.\n";
 	return (*this);
@@ -30,4 +31,8 @@ void Dog::makeSound() const{
 
 Brain	*Dog::getBrain() const{
 	return this->brain;
+}
+
+void Dog::setIdea(int index, std::string idea) const{
+	this->brain->ideas[index] = idea;
 }

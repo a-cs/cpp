@@ -13,7 +13,7 @@ class Dog: public Animal
     	Dog &operator=(Dog const &obj);
 		~Dog();
 
-		virtual void	makeSound() const;
+		void	makeSound() const;
 };
 
 #endif

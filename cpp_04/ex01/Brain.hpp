@@ -6,9 +6,8 @@
 
 class Brain
 {
-	protected:
-		std::string	ideas[100];
 	public:
+		std::string	ideas[100];
 		Brain();
 		Brain(Brain const &obj);
     	Brain &operator=(Brain const &obj);
