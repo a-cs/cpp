@@ -1,6 +1,18 @@
 #include "Bureaucrat.hpp"
 
 int	main( void ) {
+	try {
+		Bureaucrat	gradeTooHigh("João", 0);
+	}
+	catch (std::exception & e) {
+		std::cout << e.what();
+	}
+	try {
+		Bureaucrat	gradeTooLow("Maria", 151);
+	}
+	catch (std::exception & e) {
+		std::cout << e.what();
+	}
 
 	Bureaucrat	joao("João", 1);
 	Bureaucrat	maria("Maria", 150);
