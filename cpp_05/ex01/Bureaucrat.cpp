@@ -1,17 +1,17 @@
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat(): name("Unknown"), grade(150){
-		std::cout << "Bureaucrat: "	<< getName() << " -> Grade: " << getGrade() << " created using default constructor.\n";
+		// std::cout << "Bureaucrat: "	<< getName() << " -> Grade: " << getGrade() << " created using default constructor.\n";
 }
 
 
 Bureaucrat::~Bureaucrat() {
-	std::cout << "Bureaucrat: "	<< getName() << " -> Grade: " << getGrade() << " destroyed.\n";
+	// std::cout << "Bureaucrat: "	<< getName() << " -> Grade: " << getGrade() << " destroyed.\n";
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const &obj){
 	*this = obj;
-	std::cout << "Bureaucrat: "	<< getName() << " -> Grade: " << getGrade() << " copied.\n";
+	// std::cout << "Bureaucrat: "	<< getName() << " -> Grade: " << getGrade() << " copied.\n";
 }
 
 Bureaucrat &Bureaucrat::operator=(Bureaucrat const &obj){
@@ -19,7 +19,7 @@ Bureaucrat &Bureaucrat::operator=(Bureaucrat const &obj){
 		const_cast<std::string &>(this->name) = obj.getName();
 		this->grade = obj.getGrade();
 	}
-	std::cout << "Bureaucrat copy assignment operator called.\n";
+	// std::cout << "Bureaucrat copy assignment operator called.\n";
 	return (*this);
 }	
 
@@ -31,7 +31,7 @@ Bureaucrat::Bureaucrat(const std::string name, int grade){
 
 	const_cast<std::string &>(this->name) = name;
 	this->grade = grade;
-	std::cout << "Bureaucrat: "	<< getName() << " -> Grade: " << getGrade() << " created.\n";
+	// std::cout << "Bureaucrat: "	<< getName() << " -> Grade: " << getGrade() << " created.\n";
 }
 
 
@@ -65,5 +65,5 @@ const char*	Bureaucrat::GradeTooLowException::what() const throw(){
 }
 
 std::ostream	&operator<<(std::ostream &o, Bureaucrat const &b){
-	return std::cout << "Bureaucrat: "	<< b.getName() << " -> Grade: " << b.getGrade() << ".\n";	
+	return o << "Bureaucrat: "	<< b.getName() << " -> Grade: " << b.getGrade() << ".\n";	
 }

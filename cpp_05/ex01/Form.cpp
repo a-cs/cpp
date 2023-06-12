@@ -9,7 +9,7 @@ Form::~Form() {
 	std::cout << "Form: "	<< getName() << ", was destroyed.\n";
 }
 
-Form::Form(Form const &obj){
+Form::Form(Form const &obj): name(obj.getName()), isSigned(obj.getIsSigned()), gradeRequiredToSign(obj.getGradeRequiredToSign()), gradeRequiredToExecute(obj.getgradeRequiredToExecute()) {
 	*this = obj;
 	std::cout << "Form: "	<< getName() << ", was copied.\n";
 }
@@ -23,10 +23,10 @@ Form &Form::operator=(Form const &obj){
 	return (*this);
 }	
 
-Form::Form(const std::string name, int grade){
-	if(grade < 1)
+Form::Form(std::string name, int gradeRequiredToSign, int gradeRequiredToExecute): name(name), isSigned(false), gradeRequiredToSign(gradeRequiredToSign), gradeRequiredToExecute(gradeRequiredToExecute) {
+	if(gradeRequiredToSign < 1 || gradeRequiredToExecute < 1)
 		throw Form::GradeTooHighException();
-	else if(grade > 150)
+	else if(gradeRequiredToSign > 150 || gradeRequiredToExecute > 150)
 		throw Form::GradeTooLowException();
 
 	const_cast<std::string &>(this->name) = name;
@@ -35,7 +35,7 @@ Form::Form(const std::string name, int grade){
 }
 
 std::ostream	&operator<<(std::ostream &o, Form const &f){
-	return 		std::cout << "Form: "	<< getName() << " with isSigned = " << getIsSigned()<< ", gradeRequiredToSign = " << getGradeRequiredToSign() << ", gradeRequiredToExecute = " << getgradeRequiredToExecute() << ", was created using default constructor.\n";
+	return 		o << "Form: "	<< f.getName() << " with isSigned = " << f.getIsSigned()<< ", gradeRequiredToSign = " << f.getGradeRequiredToSign() << ", gradeRequiredToExecute = " << f.getgradeRequiredToExecute() << ", was created using default constructor.\n";
 }
 
 

@@ -1,57 +1,57 @@
 #include "Bureaucrat.hpp"
 
 int	main( void ) {
-	try {
-		Bureaucrat	gradeTooHigh("João", 0);
-	}
-	catch (std::exception & e) {
-		std::cout << e.what();
-	}
-	try {
-		Bureaucrat	gradeTooLow("Maria", 151);
-	}
-	catch (std::exception & e) {
-		std::cout << e.what();
-	}
 
-	Bureaucrat	joao("João", 1);
-	Bureaucrat	maria("Maria", 150);
-	Bureaucrat	jose("José", 10);
+	Bureaucrat	john("John", 1);
+	Bureaucrat	mary("Mary", 150);
+	Bureaucrat	james("James", 10);
 
-	std::cout << joao;
+	std::cout << john;
 	try {
-		joao.incrementGrade();
+		john.incrementGrade();
 	}
 	catch (std::exception & e) {
 		std::cout << e.what();
 	}
 
-	std::cout << maria;
+	std::cout << mary;
 	try {
-		maria.decrementGrade();
+		mary.decrementGrade();
 	}
 	catch (std::exception & e) {
 		std::cout << e.what();
 	}
 
-	std::cout << jose;
+	std::cout << james;
 	try {
-		jose.incrementGrade();
+		james.incrementGrade();
 	}
 	catch (std::exception & e) {
 		std::cout << e.what();
 	}
 
 
-	std::cout << jose;
+	std::cout << james;
 	try {
-		jose.decrementGrade();
+		james.decrementGrade();
 	}
 	catch (std::exception & e) {
 		std::cout << e.what();
 	}
-	std::cout << jose;
+	std::cout << james;
 
+	try {
+		Bureaucrat	gradeTooHigh("John", 0);
+	}
+	catch (std::exception & e) {
+		std::cout << e.what();
+	}
+	try {
+		Bureaucrat	gradeTooLow("Mary", 151);
+	}
+	catch (std::exception & e) {
+		std::cout << e.what();
+	}
 
 	return 0;
 }
