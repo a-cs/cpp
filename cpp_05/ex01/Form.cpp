@@ -5,7 +5,7 @@ Form::Form(): name("X"), isSigned(false), gradeRequiredToSign(10), gradeRequired
 
 Form::~Form() {}
 
-Form::Form(Form const &obj): name(obj.getName()), isSigned(obj.getIsSigned()), gradeRequiredToSign(obj.getGradeRequiredToSign()), gradeRequiredToExecute(obj.getgradeRequiredToExecute()) {
+Form::Form(Form const &obj): name(obj.getName()), isSigned(obj.getIsSigned()), gradeRequiredToSign(obj.getGradeRequiredToSign()), gradeRequiredToExecute(obj.getGradeRequiredToExecute()) {
 	*this = obj;
 }
 
@@ -14,7 +14,7 @@ Form &Form::operator=(Form const &obj){
 		this->isSigned = obj.getIsSigned();
 		const_cast<std::string &>(this->name) = obj.getName();
 		const_cast<int &>(this->gradeRequiredToSign) = obj.getGradeRequiredToSign();
-		const_cast<int &>(this->gradeRequiredToExecute) = obj.getgradeRequiredToExecute();
+		const_cast<int &>(this->gradeRequiredToExecute) = obj.getGradeRequiredToExecute();
 	}
 	return (*this);
 }	
@@ -27,7 +27,7 @@ Form::Form(std::string name, int gradeRequiredToSign, int gradeRequiredToExecute
 }
 
 std::ostream	&operator<<(std::ostream &o, Form const &f){
-	return 		o << "Form: "	<< f.getName() << " with isSigned = " << f.getIsSigned() << ", gradeRequiredToSign = " << f.getGradeRequiredToSign() << ", gradeRequiredToExecute = " << f.getgradeRequiredToExecute() << "\n";
+	return 		o << "Form: "	<< f.getName() << " with isSigned = " << f.getIsSigned() << ", gradeRequiredToSign = " << f.getGradeRequiredToSign() << ", gradeRequiredToExecute = " << f.getGradeRequiredToExecute() << "\n";
 }
 
 
@@ -43,7 +43,7 @@ int	Form::getGradeRequiredToSign() const{
 	return this->gradeRequiredToSign;
 }
 
-int	Form::getgradeRequiredToExecute() const{
+int	Form::getGradeRequiredToExecute() const{
 	return this->gradeRequiredToExecute;
 }
 
