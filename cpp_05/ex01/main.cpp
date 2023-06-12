@@ -4,7 +4,8 @@ int	main( void ) {
 
 	Bureaucrat	john("John", 1);
 	Bureaucrat	mary("Mary", 150);
-	Bureaucrat	james("James", 10);
+	Bureaucrat	james("James", 11);
+	Form		f("42B", 11,11);
 
 	std::cout << john;
 	try {
@@ -41,17 +42,22 @@ int	main( void ) {
 	std::cout << james;
 
 	try {
-		Bureaucrat	gradeTooHigh("John", 0);
+		mary.signForm(f);
 	}
 	catch (std::exception & e) {
 		std::cout << e.what();
 	}
+
+	std::cout << f;
+
 	try {
-		Bureaucrat	gradeTooLow("Mary", 151);
+		james.signForm(f);
 	}
 	catch (std::exception & e) {
 		std::cout << e.what();
 	}
+
+	std::cout << f;
 
 	return 0;
 }

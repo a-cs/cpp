@@ -56,6 +56,10 @@ void	Bureaucrat::decrementGrade(){
 	this->grade++;
 };
 
+void	Bureaucrat::signForm(Form &f){
+	f.beSigned(*this);
+}
+
 const char*	Bureaucrat::GradeTooHighException::what() const throw(){
 	return "Grade too high exception.\n";
 }

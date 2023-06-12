@@ -4,9 +4,11 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$(NAME)
 
 SRC = main.cpp \
-		Bureaucrat.cpp
+		Bureaucrat.cpp \
+		Form.cpp
 		
-INCLUDE = Bureaucrat.hpp
+INCLUDE = Bureaucrat.hpp \
+			Form.hpp
 
 OBJ_DIR = objs
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
