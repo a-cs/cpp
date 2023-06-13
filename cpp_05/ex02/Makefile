@@ -7,12 +7,14 @@ SRC = main.cpp \
 		Bureaucrat.cpp \
 		AForm.cpp \
 		ShrubberyCreationForm.cpp \
-		RobotomyRequestForm.cpp
+		RobotomyRequestForm.cpp \
+		PresidentialPardonForm.cpp
 		
 INCLUDE = Bureaucrat.hpp \
 			AForm.hpp \
 			ShrubberyCreationForm.hpp \
-			RobotomyRequestForm.hpp
+			RobotomyRequestForm.hpp \
+			PresidentialPardonForm.hpp
 
 OBJ_DIR = objs
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
@@ -33,6 +35,7 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	rm -rf *_shrubbery
 
 re: fclean all
 
