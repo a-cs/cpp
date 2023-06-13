@@ -47,4 +47,5 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &b) const{
       // \\\\\n\
 	";
 	file.close();
+	std::cout << "File " << this->target << "_shrubbery created\n";
 }

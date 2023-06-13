@@ -1,5 +1,7 @@
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+
 
 int	main( void ) {
 
@@ -7,6 +9,7 @@ int	main( void ) {
 	Bureaucrat					mary("Mary", 150);
 	Bureaucrat					james("James", 11);
 	ShrubberyCreationForm		s("home");
+	RobotomyRequestForm			r("R2D2");
 
 	try {
 		mary.executeForm(s);
@@ -19,6 +22,7 @@ int	main( void ) {
 
 	try {
 		james.signForm(s);
+		james.signForm(r);
 	}
 	catch (std::exception & e) {
 		std::cout << e.what();
@@ -38,7 +42,12 @@ int	main( void ) {
 		std::cout << e.what();
 	}
 
-	// std::cout << s;
+	try {
+		james.executeForm(r);
+	}
+	catch (std::exception & e) {
+		std::cout << e.what();
+	}
 
 	return 0;
 }

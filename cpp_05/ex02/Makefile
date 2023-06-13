@@ -6,11 +6,13 @@ VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes 
 SRC = main.cpp \
 		Bureaucrat.cpp \
 		AForm.cpp \
-		ShrubberyCreationForm.cpp
+		ShrubberyCreationForm.cpp \
+		RobotomyRequestForm.cpp
 		
 INCLUDE = Bureaucrat.hpp \
 			AForm.hpp \
-			ShrubberyCreationForm.hpp
+			ShrubberyCreationForm.hpp \
+			RobotomyRequestForm.hpp
 
 OBJ_DIR = objs
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
