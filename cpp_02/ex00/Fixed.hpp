@@ -6,12 +6,12 @@
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:51:55 by acarneir          #+#    #+#             */
-/*   Updated: 2023/04/09 22:38:50 by acarneir         ###   ########.fr       */
+/*   Updated: 2023/06/18 21:11:53 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_H
-# define FIXED_H
+#ifndef FIXED_HPP
+# define FIXED_HPP
 
 #include <iostream>
 

@@ -6,12 +6,12 @@
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 23:11:27 by acarneir          #+#    #+#             */
-/*   Updated: 2023/03/29 23:16:16 by acarneir         ###   ########.fr       */
+/*   Updated: 2023/06/18 21:11:53 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_H
-# define ZOMBIE_H
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 
 #include <string>
 

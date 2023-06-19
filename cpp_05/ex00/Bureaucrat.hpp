@@ -1,6 +1,6 @@
 
-#ifndef BUREAUCRAT_H
-# define BUREAUCRAT_H
+#ifndef BUREAUCRAT_HPP
+# define BUREAUCRAT_HPP
 
 #include <iostream>
 #include <exception>

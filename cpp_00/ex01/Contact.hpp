@@ -6,12 +6,12 @@
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 23:10:11 by acarneir          #+#    #+#             */
-/*   Updated: 2023/03/19 23:53:18 by acarneir         ###   ########.fr       */
+/*   Updated: 2023/06/18 21:11:53 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_H
-# define CONTACT_H
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
 
 #include <string>
 

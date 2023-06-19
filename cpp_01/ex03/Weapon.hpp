@@ -6,12 +6,12 @@
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 22:24:22 by acarneir          #+#    #+#             */
-/*   Updated: 2023/03/30 22:33:01 by acarneir         ###   ########.fr       */
+/*   Updated: 2023/06/18 21:11:53 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEAPON_H
-# define WEAPON_H
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
 
 #include <string>
 

@@ -6,12 +6,12 @@
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 22:57:28 by acarneir          #+#    #+#             */
-/*   Updated: 2023/03/30 23:16:30 by acarneir         ###   ########.fr       */
+/*   Updated: 2023/06/18 21:11:53 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANB_H
-# define HUMANB_H
+#ifndef HUMANB_HPP
+# define HUMANB_HPP
 
 #include <string>
 #include "Weapon.hpp"

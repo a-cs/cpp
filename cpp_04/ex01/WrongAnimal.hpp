@@ -1,6 +1,6 @@
 
-#ifndef WRONGANIMAL_H
-# define WRONGANIMAL_H
+#ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
 
 #include <iostream>
 
