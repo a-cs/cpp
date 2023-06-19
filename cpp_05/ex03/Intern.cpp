@@ -31,7 +31,7 @@ AForm	*Intern::makeForm(std::string formName, std::string formTarget){
 	
 	AForm		*(Intern::*func[3])(std::string target) = {
 		&Intern::createShrubberyCreationForm,
-		&Intern::createPresidentialPardonForm,
+		&Intern::createRobotomyRequestForm,
 		&Intern::createPresidentialPardonForm
 	};
 	
