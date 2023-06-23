@@ -28,30 +28,68 @@ bool ScalarConverter::isPseudo(const std::string &str){
 	return false;
 }
 
-void ScalarConverter::convert(const std::string &str){
-	std::string	c,i = "";
+void ScalarConverter::printPseudo(const std::string &str){
+	std::string	c= "impossible";
+	std::string	i= "impossible";
 	float		f = 0.0;
 	double		d = 0.0;
-	
-	if(isPseudo(str)){
-		c = "impossible";
-		i = "impossible";
-		if (str[str.length() - 1] == 'f')
-		{
-			f = atof(str.c_str());
-			d = static_cast<double>(f);
-		}
-		else
-		{
-			d = atof(str.c_str());
-			f = static_cast<float>(d);
-		}
+	if (str[str.length() - 1] == 'f')
+	{
+		f = atof(str.c_str());
+		d = static_cast<double>(f);
 	}
+	else
+	{
+		d = atof(str.c_str());
+		f = static_cast<float>(d);
+	}
+	printConversion(c, i, f, d);
+}
+
+bool ScalarConverter::isChar(const std::string &str){
+	return (str.length() == 1 && std::isprint(str[0]) && !std::isdigit(str[0]));
+}
+
+void ScalarConverter::printChar(const std::string &str){
+	std::string	c = "";
+	int 		i;
+	float		f;
+	double		d;
+	c += str;
+	i = static_cast<int>(str[0]);
+	f = static_cast<float>(str[0]);
+	d = static_cast<double>(str[0]);
+	printConversion(c, i, f, d);
+}
 
 
+void ScalarConverter::printConversion(const std::string &c, const std::string &i, const float &f, const double &d){
 	std::cout << "char:" << c << "\n"
 			<< "int:" << i << "\n"
 			<< "float: "<< f << "f\n"
 			<< "double: "<< d << "\n";
+}
+
+void ScalarConverter::printConversion(const std::string &c, const int &i, const float &f, const double &d){
+	std::cout << "char:" << c << "\n"
+			<< "int:" << i << "\n"
+			<< "float: "<< f << "f\n"
+			<< "double: "<< d << "\n";
+}
+
+void ScalarConverter::convert(const std::string &str){
+	if(isPseudo(str)){
+		printPseudo(str);
+		return ;
+	}
+
+	if(isChar(str)){
+		printChar(str);
+		return ;
+	}
+
+	
+
+
 
 }
