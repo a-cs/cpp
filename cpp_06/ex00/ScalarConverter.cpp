@@ -62,19 +62,62 @@ void ScalarConverter::printChar(const std::string &str){
 	printConversion(c, i, f, d);
 }
 
+bool ScalarConverter::isInt(const std::string &str){
+	for(size_t i=0; i< str.length(); i++){
+		if(i == 0 && str[i] == '-')
+			continue;
+		if(!isdigit(str[i]))
+			return false;
+	}
+	if(strtod(str.c_str(), NULL) > INT_MAX || strtod(str.c_str(), NULL) < INT_MIN )
+		return false;
+	return true;
+}
+
+void ScalarConverter::printInt(const std::string &str){
+	std::string	c = "";
+	int 		i;
+	float		f;
+	double		d;
+	i = atoi(str.c_str());
+	c = static_cast<char>(i);
+	f = static_cast<float>(i);
+	d = static_cast<double>(i);
+	if(i < 32 || i > 126){
+		c = "Non displayable";
+	}
+	printConversion(c, i, f, d);
+}
+
 
 void ScalarConverter::printConversion(const std::string &c, const std::string &i, const float &f, const double &d){
-	std::cout << "char:" << c << "\n"
-			<< "int:" << i << "\n"
-			<< "float: "<< f << "f\n"
-			<< "double: "<< d << "\n";
+	if(f - static_cast<int>(f) == 0){
+		std::cout << "char: " << c << "\n"
+				<< "int: " << i << "\n"
+				<< "float: "<< f << ".0f\n"
+				<< "double: "<< d << "\n";
+	}
+	else {
+		std::cout << "char: " << c << "\n"
+				<< "int: " << i << "\n"
+				<< "float: "<< f << "f\n"
+				<< "double: "<< d << "\n";
+	}
 }
 
 void ScalarConverter::printConversion(const std::string &c, const int &i, const float &f, const double &d){
-	std::cout << "char:" << c << "\n"
-			<< "int:" << i << "\n"
-			<< "float: "<< f << "f\n"
-			<< "double: "<< d << "\n";
+	if(f - static_cast<int>(f) == 0){
+		std::cout << "char: '" << c << "'\n"
+				<< "int: " << i << "\n"
+				<< "float: "<< f << ".0f\n"
+				<< "double: "<< d << "\n";
+	}
+	else {
+		std::cout << "char: '" << c << "'\n"
+				<< "int: " << i << "\n"
+				<< "float: "<< f << "f\n"
+				<< "double: "<< d << "\n";
+	}
 }
 
 void ScalarConverter::convert(const std::string &str){
@@ -89,7 +132,10 @@ void ScalarConverter::convert(const std::string &str){
 	}
 
 	
-
+	if(isInt(str)){
+		printInt(str);
+		return ;
+	}
 
 
 }

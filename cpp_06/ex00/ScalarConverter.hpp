@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <climits>
 
 class ScalarConverter
 {
@@ -11,9 +12,11 @@ class ScalarConverter
 		ScalarConverter(ScalarConverter const &obj);
     	ScalarConverter &operator=(ScalarConverter const &obj);
 		static bool isPseudo(const std::string &str);
-		static void printPseudo(const std::string &str);
 		static bool isChar(const std::string &str);
+		static bool isInt(const std::string &str);
+		static void printPseudo(const std::string &str);
 		static void printChar(const std::string &str);
+		static void printInt(const std::string &str);
 		static void printConversion(const std::string &c, const std::string &i, const float &f, const double &d);
 		static void printConversion(const std::string &c, const int &i, const float &f, const double &d);
 
