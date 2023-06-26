@@ -89,6 +89,26 @@ void ScalarConverter::printInt(const std::string &str){
 	printConversion(c, i, f, d);
 }
 
+bool ScalarConverter::isFloat(const std::string &str){
+	if(str.find_first_of("f") == std::string::npos)
+		return false;
+	return true;
+}
+
+void ScalarConverter::printFloat(const std::string &str){
+	std::string	c = "";
+	int 		i;
+	float		f;
+	double		d;
+	f = atof(str.c_str());
+	c = static_cast<char>(f);
+	i = static_cast<int>(f);
+	d = static_cast<double>(f);
+	if(f - i != 0.0 && (i > 32 || i < 126))
+		c = "Non displayable";
+	printConversion(c, i, f, d);
+}
+
 bool ScalarConverter::hasMoreThanOneOfValidChars(const std::string &str){
 	std::string	validChars = "+-.f";
 	for(size_t i = 0; i< validChars.length(); i++)
@@ -152,31 +172,18 @@ void ScalarConverter::printConversion(const std::string &c, const int &i, const 
 }
 
 void ScalarConverter::convert(const std::string &str){
-	if(isPseudo(str)){
+	if(isPseudo(str))
 		printPseudo(str);
-		return ;
-	}
-
-	if(isChar(str)){
+	else if(isChar(str))
 		printChar(str);
-		return ;
-	}
-
-	if(isInvalidString(str)){
+	else if(isInvalidString(str))
 		std::cout << "The string has an Invalid character!";
-		return ;
-	}
-	
-	if(isInt(str)){
+	else if(isInt(str))
 		printInt(str);
-		return ;
-	}
+	else if(isFloat(str))
+		printFloat(str);
 
 
-	// if(isFloat(str)){
-	// 	printFloat(str);
-	// 	return ;
-	// }
 
 	// if(isDouble(str)){
 	// 	printDouble(str);

@@ -15,10 +15,12 @@ class ScalarConverter
 		static bool isChar(const std::string &str);
 		static bool isInt(const std::string &str);
 		static bool isInvalidString(const std::string &str);
+		static bool isFloat(const std::string &str);
 		static bool hasMoreThanOneOfValidChars(const std::string &str);
 		static void printPseudo(const std::string &str);
 		static void printChar(const std::string &str);
 		static void printInt(const std::string &str);
+		static void printFloat(const std::string &str);
 		static void printConversion(const std::string &c, const std::string &i, const float &f, const double &d);
 		static void printConversion(const std::string &c, const int &i, const float &f, const double &d);
 

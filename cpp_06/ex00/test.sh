@@ -29,6 +29,10 @@ echo "\e[1;32mTest 7: convert float nanf\e[0m"
 valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME nanf
 echo
 
+echo "\e[1;32mTest 8: convert float 42f\e[0m"
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME 42f
+echo
+
 echo "\e[1;32mTest 8: convert float 42.4f\e[0m"
 valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME 42.4f
 echo
