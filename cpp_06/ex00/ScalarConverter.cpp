@@ -64,7 +64,7 @@ void ScalarConverter::printChar(const std::string &str){
 
 bool ScalarConverter::isInt(const std::string &str){
 	for(size_t i=0; i< str.length(); i++){
-		if(i == 0 && str[i] == '-')
+		if(i == 0 && (str[i] == '+' || str[i] == '-'))
 			continue;
 		if(!isdigit(str[i]))
 			return false;
@@ -87,6 +87,37 @@ void ScalarConverter::printInt(const std::string &str){
 		c = "Non displayable";
 	}
 	printConversion(c, i, f, d);
+}
+
+bool ScalarConverter::hasMoreThanOneOfValidChars(const std::string &str){
+	std::string	validChars = "+-.f";
+	for(size_t i = 0; i< validChars.length(); i++)
+		if(str.find_first_of(validChars[i]) != str.find_last_of(validChars[i]))
+			return true;
+	return false;
+}
+
+bool ScalarConverter::isInvalidString(const std::string &str){
+	size_t fPos, dotPos;
+	if(str.find_first_not_of("0123456789+-.f") != std::string::npos)
+		return true;
+	if(hasMoreThanOneOfValidChars(str))
+		return true;
+
+	fPos = str.find_first_of("f");
+	if(fPos != std::string::npos && fPos != str.length() - 1)
+		return true;
+	dotPos = str.find_first_of(".");
+	if(dotPos != std::string::npos && dotPos == str.length() - 1)
+		return true;
+	if(fPos != std::string::npos && dotPos != std::string::npos && dotPos == fPos - 1)
+		return true;
+	if(fPos == std::string::npos && dotPos != std::string::npos && dotPos < str.length() - 2)
+		return true;
+	if(fPos != std::string::npos && dotPos != std::string::npos && dotPos < str.length() - 3)
+		return true;
+
+	return false;
 }
 
 
@@ -131,11 +162,26 @@ void ScalarConverter::convert(const std::string &str){
 		return ;
 	}
 
+	if(isInvalidString(str)){
+		std::cout << "The string has an Invalid character!";
+		return ;
+	}
 	
 	if(isInt(str)){
 		printInt(str);
 		return ;
 	}
+
+
+	// if(isFloat(str)){
+	// 	printFloat(str);
+	// 	return ;
+	// }
+
+	// if(isDouble(str)){
+	// 	printDouble(str);
+	// 	return ;
+	// }
 
 
 }
