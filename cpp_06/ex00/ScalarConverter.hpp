@@ -21,6 +21,7 @@ class ScalarConverter
 		static void printChar(const std::string &str);
 		static void printInt(const std::string &str);
 		static void printFloat(const std::string &str);
+		static void printDouble(const std::string &str);
 		static void printConversion(const std::string &c, const std::string &i, const float &f, const double &d);
 		static void printConversion(const std::string &c, const int &i, const float &f, const double &d);
 
