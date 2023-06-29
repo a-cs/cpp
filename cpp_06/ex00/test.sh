@@ -96,3 +96,11 @@ echo
 echo "\e[1;31mTest 24: invalid 42.00f\e[0m"
 valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME 42.00f
 echo
+
+echo "\e[1;31mTest 25: invalid 42+00f\e[0m"
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME 42+00f
+echo
+
+echo "\e[1;31mTest 26: invalid 420-0f\e[0m"
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME 42+00f
+echo

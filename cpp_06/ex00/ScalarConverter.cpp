@@ -142,7 +142,7 @@ bool ScalarConverter::hasMoreThanOneOfValidChars(const std::string &str){
 }
 
 bool ScalarConverter::isInvalidString(const std::string &str){
-	size_t fPos, dotPos;
+	size_t fPos, dotPos, plusPos, minusPos;
 	if(str.find_first_not_of("0123456789+-.f") != std::string::npos)
 		return true;
 	if(hasMoreThanOneOfValidChars(str))
@@ -159,6 +159,13 @@ bool ScalarConverter::isInvalidString(const std::string &str){
 	if(fPos == std::string::npos && dotPos != std::string::npos && dotPos < str.length() - 2)
 		return true;
 	if(fPos != std::string::npos && dotPos != std::string::npos && dotPos < str.length() - 3)
+		return true;
+	plusPos = str.find_last_of("+");
+	// std::cout << "+pos = " << plusPos << "\n";
+	if(plusPos != std::string::npos && plusPos != 0)
+		return true;
+	minusPos = str.find_last_of("-");
+	if(minusPos != std::string::npos && minusPos != 0)
 		return true;
 
 	return false;
