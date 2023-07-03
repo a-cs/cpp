@@ -3,7 +3,7 @@
 int	main( void) {
 
 	Data		data;
-	Data		*deserializedData = NULL;
+	Data		*deserializedData;
 	uintptr_t	raw;
 
 	std::cout << "---------Initializing Data---------\n";
@@ -13,11 +13,11 @@ int	main( void) {
 
 	std::cout << "\n---------Serializing Data---------\n";
 	raw = Serializer::serialize(&data);
-	std::cout << "Adress:" << raw << "\n";
+	std::cout << "Raw:" << raw << "\n";
 
 	std::cout << "\n---------Deserialized Data---------\n";
 	deserializedData = Serializer::deserialize(raw);
-	std::cout << *deserializedData << "\n";
+	std::cout << *deserializedData;
 
 	return 0;
 }
