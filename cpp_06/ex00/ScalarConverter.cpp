@@ -173,18 +173,12 @@ bool ScalarConverter::isInvalidString(const std::string &str){
 
 
 void ScalarConverter::printConversion(const std::string &c, const std::string &i, const float &f, const double &d){
-	if(f - static_cast<int>(f) == 0){
-		std::cout << "char: " << c << "\n"
-				<< "int: " << i << "\n"
-				<< "float: "<< f << ".0f\n"
-				<< "double: "<< d << ".0\n";
-	}
-	else {
-		std::cout << "char: " << c << "\n"
-				<< "int: " << i << "\n"
-				<< "float: "<< f << "f\n"
-				<< "double: "<< d << "\n";
-	}
+	std::cout.precision(1);
+	std::cout << std::fixed 
+			<< "char: " << c << "\n"
+			<< "int: " << i << "\n"
+			<< "float: "<< f << "f\n"
+			<< "double: "<< d << "\n";
 }
 
 void ScalarConverter::printConversion(const std::string &c, const int &i, const float &f, const double &d){
@@ -194,19 +188,13 @@ void ScalarConverter::printConversion(const std::string &c, const int &i, const 
 		newC = "'"+c+"'";
 	else
 		newC = c;
-	
-	if(f - static_cast<int>(f) == 0){
-		std::cout << "char: " << newC << "\n"
-				<< "int: " << i << "\n"
-				<< "float: "<< f << ".0f\n"
-				<< "double: "<< d << ".0\n";
-	}
-	else {
-		std::cout << "char: " << newC << "\n"
-				<< "int: " << i << "\n"
-				<< "float: "<< f << "f\n"
-				<< "double: "<< d << "\n";
-	}
+	std::cout.precision(1);
+	std::cout << std::fixed 
+			<< "char: " << newC << "\n"
+			<< "int: " << i << "\n"
+			<< "float: "<< f << "f\n"
+			<< "double: "<< d << "\n";
+
 }
 
 void ScalarConverter::convert(const std::string &str){
