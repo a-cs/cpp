@@ -1,4 +1,4 @@
-#include "ScalarConverter.hpp"
+#include "../include/ScalarConverter.hpp"
 
 int	main( int argc, char *argv[] ) {
 

@@ -2,24 +2,27 @@ NAME = ScalarConverter
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = main.cpp \
-		ScalarConverter.cpp
-		
-INCLUDE = ScalarConverter.hpp
+SRC_DIR := ./src
+SRC := main.cpp \
+ 			ScalarConverter.cpp
 
-OBJ_DIR = objs
-OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+OBJ_DIR := ./objs
+OBJS := $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
+
+INC := ./include
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	$(CC) $(FLAGS) -I $(INC) -c $< -o $@
 
 all: $(NAME)
 
-$(NAME): $(OBJ_DIR) $(OBJ)
-	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
+$(NAME): $(OBJS)
+	$(CC) $(FLAGS) $(OBJS) -o $@
 
-$(OBJ_DIR)/%.o: %.c $(INCLUDE)
-	$(CC) $(FLAGS) -c $< -o $@
+$(OBJS): | $(OBJ_DIR)
 
 $(OBJ_DIR):
-	mkdir -p $@
+	mkdir $(OBJ_DIR)
 
 clean:
 	rm -rf $(OBJ_DIR)
