@@ -1,6 +1,25 @@
 #include "BitcoinExchange.hpp"
 
 BitcoinExchange::BitcoinExchange() {
+	int				pos = 0;
+	std::string		dataFileName = "data.csv";
+	std::ifstream	data(dataFileName.c_str());
+	std::string		line;
+
+	while (std::getline(data, line)) {
+		if (pos == 0 || line.size() == 0) {
+			pos++;
+			continue;
+		}
+		std::string date;
+		float value;
+
+		date = line.substr(0, line.find(","));
+		value = strtod(line.substr(line.find(",")+1).c_str(), NULL);
+		this->database[date] = value;
+		pos++;
+	}
+	data.close();
 }
 
 
@@ -38,8 +57,9 @@ bool	BitcoinExchange::isInvalidDate(std::string line, std::string *date){
 	int			month= 0;
 	int			day = 0;
 	std::string	dateStr = "";
+	std::string separator = " | ";
 
-	dateStr = line.substr(0, line.find(" | "));
+	dateStr = line.substr(0, line.find(separator));
 
 	*date = dateStr;
 	if (dateStr.size() != 10)
@@ -60,9 +80,47 @@ bool	BitcoinExchange::isInvalidDate(std::string line, std::string *date){
 	return false;
 }
 
+bool	BitcoinExchange::isInvalidNumber(std::string line, float *nbr){
+	std::string	numberStr = "";
+	std::string separator = " | ";
+	float number = 0;
+
+	numberStr = line.substr(line.find(separator) + separator.size());
+	number = strtod(numberStr.c_str(), NULL);
+	if(numberStr != "0" && number == 0){
+		std::cout << "Error: invalid number.\n";
+		return true;
+	}
+	if (number > 1000) {
+		std::cout << "Error: too large number.\n";
+		return true;
+	}
+	if (number < 0) {
+		std::cout << "Error: not a positive number.\n";
+		return true;
+	}
+	*nbr = number;
+
+	return false;
+}
+
+float	BitcoinExchange::getDbValueFromDate(std::string date){
+	if (this->database.find(date) != this->database.end()) {
+		return this->database.at(date);
+	}
+
+	std::map<std::string, float>::const_iterator upperBound = this->database.upper_bound(date);
+	if (upperBound == this->database.begin()) {
+		return upperBound->second;
+	}
+	--upperBound;
+	return upperBound->second;
+}
+
 
 void	BitcoinExchange::displayValue(std::string line, int lineCount){
 	std::string	date = "";
+	float nbr = 0;
 	
 	if(isInvalidLine(line, lineCount))
 		return ;
@@ -70,7 +128,12 @@ void	BitcoinExchange::displayValue(std::string line, int lineCount){
 		std::cout << "Error: invalid date => \"" << date << "\"\n";
 		return ;
 	}
-	std::cout << line << std::endl;
+	if(isInvalidNumber(line, &nbr)){
+		return ;
+	}
+
+	float dbValue = getDbValueFromDate(date);
+	std::cout << date << " => " << nbr << " = " << nbr * dbValue << std::endl;
 }
 
 int BitcoinExchange::run(char *fileName){
@@ -87,7 +150,6 @@ int BitcoinExchange::run(char *fileName){
 		displayValue(line, lineCount);
 		lineCount++;
 	}
-	// std::cout << fileName << std::endl;
 	file.close();
 	return 0;
 }

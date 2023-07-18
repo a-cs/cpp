@@ -21,6 +21,8 @@ class BitcoinExchange
 		void	displayValue(std::string line, int lineCount);
 		bool	isInvalidLine(std::string line, int lineCount);
 		bool	isInvalidDate(std::string line, std::string *date);
+		bool	isInvalidNumber(std::string line, float *nbr);
+		float	getDbValueFromDate(std::string date);
 };
 
 #endif
