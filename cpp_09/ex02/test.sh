@@ -11,8 +11,20 @@ NAME=PmergeMe
 # echo
 
 echo
-echo "\e[1;32mTest 1 - sort 10 numbers from 0 to 9\e[0m"
-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME `shuf -i 0-9 -n 10 | xargs`
+echo "\e[1;32mTest 1 - sort 4 numbers\e[0m"
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME 0 2 1 5
+
+echo
+echo "\e[1;32mTest 2 - sort 5 numbers\e[0m"
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME 0 2 1 3 5
+
+# echo
+# echo "\e[1;32mTest 1 - sort 10 numbers from 0 to 9\e[0m"
+# valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME `shuf -i 0-9 -n 10 | xargs`
+
+# echo
+# echo "\e[1;32mTest 2 - sort 11 numbers from 0 to 10\e[0m"
+# valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME `shuf -i 0-10 -n 11 | xargs`
 
 echo
 echo "\e[1;31mError tests\e[0m"
