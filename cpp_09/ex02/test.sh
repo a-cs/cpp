@@ -2,17 +2,9 @@
 make && clear
 NAME=PmergeMe
 
-# echo "\e[1;32mTest 1: Valid file name\e[0m"
-# valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME input.txt
-# echo
-
-# echo "\e[1;31mTest 2:Invalid file name\e[0m"
-# valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME invalidFilename.txt
-# echo
-
 echo
 echo "\e[1;32mTest 1 - sort 4 numbers\e[0m"
-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME 0 2 1 5
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME 0 2 5 1
 
 echo
 echo "\e[1;32mTest 2 - sort 5 numbers\e[0m"

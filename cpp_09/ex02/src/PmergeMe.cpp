@@ -76,21 +76,27 @@ int PmergeMe::sort(char **input, int *values){
 	std::cout<< "\nsize = " << size << "\n";
 	std::cout<< "straggler = " << straggler << "\n";
 
+	std::cout << "\n\nCreating Pairs\n";
+
 	creatingPairs(values);
 
-	std::cout << "\n\nVec Pairs\n";
+	std::cout << "Vec Pairs\n";
+	printContainerPair(vec);
+	
+	std::cout << "\nDec Pairs\n";
+	printContainerPair(deq);
 
-	for (size_t i = 0; i < vec.size(); ++i){
-    	std::cout << "p[" << i << "] = ";
-		std::cout << vec[i].first << ", " << vec[i].second << '\n';
-	}
+
+	std::cout << "\n\nSortting Pairs\n";
+
+	sortingPairs(vec);
+	sortingPairs(deq);
+
+	std::cout << "Vec Pairs\n";
+	printContainerPair(vec);
 	
 	std::cout << "\n\nDec Pairs\n";
-
-	for (size_t i = 0; i < deq.size(); ++i){
-    	std::cout << "p[" << i << "] = ";
-		std::cout << deq[i].first << ", " << deq[i].second << '\n';
-	}
+	printContainerPair(deq);
 
 
 	

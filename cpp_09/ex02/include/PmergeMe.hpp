@@ -26,6 +26,22 @@ class PmergeMe
 		~PmergeMe();
 
 		int 	sort(char **input,int *values);
+
+		template < typename Container >
+		void printContainerPair(Container& c){
+			for (size_t i = 0; i < c.size(); ++i){
+				std::cout << "p[" << i << "] = ";
+				std::cout << c[i].first << ", " << c[i].second << '\n';
+			}
+		}
+
+		template < typename Container >
+		void sortingPairs(Container& c){
+			for (size_t i = 0; i < c.size(); ++i){
+				if(c[i].first > c[i].second)
+					std::swap(c[i].first, c[i].second);
+			};
+		}
 };
 
 #endif
