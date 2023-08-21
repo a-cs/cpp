@@ -57,26 +57,49 @@ int	PmergeMe::jacobsthal(int n){
 	return jacobsthal(n - 1) + 2 * jacobsthal(n - 2);
 }
 
+double	PmergeMe::timeNow() {
+	struct timeval	timeval;
+
+	gettimeofday(&timeval, NULL);
+	return ((timeval.tv_sec * 1000) + (timeval.tv_usec * 0.001));
+}
+
+void	PmergeMe::printResult(char **input, double vecTime, double deqTime) {
+	size_t	limit;
+
+	vecSorted.size() > 10 ? limit = 10 : limit = vecSorted.size();
+	std::cout << "Before: ";
+	for (size_t i = 1; i < limit + 1; i++)
+		std::cout << input[i] << " ";
+	if (vecSorted.size() > 10)
+		std::cout << "[...]";
+	std::cout << "\nAfter:  ";
+	for (size_t i = 0; i < limit; i++)
+		std::cout << this->vecSorted[i] << " ";
+	if (vecSorted.size() > 10)
+		std::cout << "[...]";
+	std::cout << "\nTime to process a range of " << vecSorted.size() << " elements with std::vector : " << vecTime << " us" << std::endl;
+	std::cout << "Time to process a range of " << deqSorted.size() << " elements with std::deque  : " << deqTime << " us" << std::endl;
+}
+
 int PmergeMe::sort(char **input, int *values){
+	double	vecTime;
+	double	deqTime;
 
 	if(!validateInput(input, values)){
 		std::cout << "Error\n";
 		return 1;
 	}
 
-	std::cout << "\n---- Vector Sort ----";
-
+	vecTime = timeNow();
 	fordJohnsonMergeInsertionSort(vec, vecSorted, values);
-	std::cout << "FinalSeq size= " << vecSorted.size();
-	std::cout << "\n";
+	vecTime = timeNow() - vecTime;
 
-
-	std::cout << "\n\n---- Deque Sort ----";
-
+	deqTime = timeNow();
 	fordJohnsonMergeInsertionSort(deq, deqSorted, values);
-	std::cout << "FinalSeq size= " << deqSorted.size();
-	std::cout << "\n";
+	deqTime = timeNow()- deqTime;
 
+	printResult(input,vecTime, deqTime);
 
 	
 	return 0;

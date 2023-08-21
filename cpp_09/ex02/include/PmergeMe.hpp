@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <climits>
 #include <algorithm>
+#include <sys/time.h>
 
 class PmergeMe
 {
@@ -23,13 +24,8 @@ class PmergeMe
 		void								creatingPairs(int *values);
 		int									jacobsthal(int n);
 		bool								valExists(const std::vector<int>& vec, int val);
-	public:
-		PmergeMe();
-		PmergeMe(PmergeMe const &obj);
-    	PmergeMe &operator=(PmergeMe const &obj);
-		~PmergeMe();
-
-		int 	sort(char **input,int *values);
+		double								timeNow();
+		void								printResult(char **input, double timeVec, double timeDeq);
 
 		template < typename Container >
 		void printContainer(Container& c){
@@ -192,13 +188,18 @@ class PmergeMe
 		template < typename ContainerPair, typename Container>
 		void fordJohnsonMergeInsertionSort(ContainerPair& cPair, Container& cSorted, int *values){
 			stragglerCatching(values);
-
-			std::cout<< "\nsize = " << size << "\n";
 			creatingPairs(values, cPair);
 			sortingPairs(cPair);
 			mergeSort(cPair);
 			createSequence(cPair, cSorted);
 		}
+	public:
+		PmergeMe();
+		PmergeMe(PmergeMe const &obj);
+    	PmergeMe &operator=(PmergeMe const &obj);
+		~PmergeMe();
+
+		int 	sort(char **input,int *values);
 };
 
 #endif

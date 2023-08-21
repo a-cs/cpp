@@ -7,9 +7,7 @@ int	main(int argc, char** argv) {
 		std::cout << "Error: No arguments provided\n";
 		return 1;
 	} else {
-		std::cout << "Argc=" << argc <<"\n";
 		PmergeMe ppm;
-		
 		return (ppm.sort(argv, values));
 	}
 
