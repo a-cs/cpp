@@ -12,7 +12,7 @@ class RPN
 	public:
 		RPN();
 		RPN(RPN const &obj);
-    	RPN &operator=(RPN const &obj);
+		RPN &operator=(RPN const &obj);
 		~RPN();
 
 		int 	calculate(std::string input);
