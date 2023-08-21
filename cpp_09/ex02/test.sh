@@ -1,14 +1,14 @@
 # !/bin/sh
-make && clear
+make re && clear
 NAME=PmergeMe
 
 echo
-echo "\e[1;32mTest 1 - sort 10 numbers\e[0m"
-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME 72 48 30 33 47 68 90 70 40 9
+echo "\e[1;32mTest 1 - sort 14 numbers\e[0m"
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME 94 58 23 95 75 20 33 10 78 0 76 7 70 65
 
 echo
-echo "\e[1;32mTest 2 - sort 11 numbers\e[0m"
-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME 72 48 30 33 47 68 90 70 40 9 3
+echo "\e[1;32mTest 2 - sort 15 numbers\e[0m"
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME 94 58 23 95 75 20 33 10 78 0 76 7 70 65 87
 
 # echo
 # echo "\e[1;32mTest 1 - sort 10 numbers from 0 to 9\e[0m"

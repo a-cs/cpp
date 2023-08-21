@@ -57,6 +57,23 @@ void PmergeMe::creatingPairs(int *values){
 	}
 }
 
+int	PmergeMe::jacobsthal(int n){
+	if (n == 0)
+		return 0;
+	if (n == 1)
+		return 1;
+	return jacobsthal(n - 1) + 2 * jacobsthal(n - 2);
+}
+
+bool PmergeMe::valExists(const std::vector<int>& vec, int val){
+	for (int i = 0; i < (int)vec.size(); i++)
+		if (vec[i] == val){
+			std::cout << "Val found = " << val << "\n";
+			return true;
+		}
+	return false;
+}
+
 int PmergeMe::sort(char **input, int *values){
 
 	if(!validateInput(input, values)){
@@ -98,6 +115,10 @@ int PmergeMe::sort(char **input, int *values){
 	mergeSort(vec);
 	std::cout << "Vec Pairs\n";
 	printContainerPair(vec);
+
+	std::cout << "\n\nCreating Sequece\n";
+
+	createSequence(vec, "vector");
 
 	
 
