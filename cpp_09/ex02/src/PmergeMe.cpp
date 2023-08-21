@@ -51,7 +51,6 @@ void PmergeMe::stragglerCatching(int *values){
 
 void PmergeMe::creatingPairs(int *values){
 	for(int i = 0; i < size; i += 2){
-		std::cout<< "isize = " << i << "\n";
 		std::pair<int, int> newPair(values[i], values[i + 1]);
 		vec.push_back(newPair);
 		deq.push_back(newPair);
@@ -83,21 +82,22 @@ int PmergeMe::sort(char **input, int *values){
 	std::cout << "Vec Pairs\n";
 	printContainerPair(vec);
 	
-	std::cout << "\nDec Pairs\n";
-	printContainerPair(deq);
+	// std::cout << "\nDec Pairs\n";
+	// printContainerPair(deq);
 
 
-	std::cout << "\n\nSortting Pairs\n";
+	std::cout << "\n\nSorting Each Pairs\n";
 
 	sortingPairs(vec);
-	sortingPairs(deq);
 
 	std::cout << "Vec Pairs\n";
 	printContainerPair(vec);
-	
-	std::cout << "\n\nDec Pairs\n";
-	printContainerPair(deq);
 
+	std::cout << "\n\nSorting Pairs by largest value\n";
+
+	mergeSort(vec);
+	std::cout << "Vec Pairs\n";
+	printContainerPair(vec);
 
 	
 

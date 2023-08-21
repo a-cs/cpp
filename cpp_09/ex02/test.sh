@@ -3,12 +3,12 @@ make && clear
 NAME=PmergeMe
 
 echo
-echo "\e[1;32mTest 1 - sort 4 numbers\e[0m"
-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME 0 2 5 1
+echo "\e[1;32mTest 1 - sort 10 numbers\e[0m"
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME 72 48 30 33 47 68 90 70 40 9
 
 echo
-echo "\e[1;32mTest 2 - sort 5 numbers\e[0m"
-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME 0 2 1 3 5
+echo "\e[1;32mTest 2 - sort 11 numbers\e[0m"
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME 72 48 30 33 47 68 90 70 40 9 3
 
 # echo
 # echo "\e[1;32mTest 1 - sort 10 numbers from 0 to 9\e[0m"

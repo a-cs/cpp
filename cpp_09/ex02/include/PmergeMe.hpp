@@ -42,6 +42,50 @@ class PmergeMe
 					std::swap(c[i].first, c[i].second);
 			};
 		}
+
+		template < typename Container >
+		void mergeSort(Container& c){
+			if (c.size() <= 1)
+				return;
+			Container left, right;
+			int mid = c.size() / 2;
+			typename Container::iterator itOriginal = c.begin();
+			for (int i = 0; i < mid; i++, ++itOriginal)
+				left.push_back(*itOriginal);
+			for (int i = mid; i < (int)c.size(); i++, ++itOriginal)
+				right.push_back(*itOriginal);
+			mergeSort(left);
+			mergeSort(right);
+
+			merge(c, left, right);
+		}
+
+		template < typename Container >
+		void merge(Container& c, Container& left, Container& right){
+			typename Container::iterator itOriginal(c.begin()), itLeft(left.begin()), itRight(right.begin());
+
+			while (itLeft!= left.end() && itRight!= right.end()){
+				if (itLeft->second < itRight->second){
+					*itOriginal = *itLeft;
+					++itOriginal;
+					++itLeft;
+				} else {
+					*itOriginal = *itRight;
+					++itOriginal;
+					++itRight;
+				}
+			}
+			while (itLeft != left.end()){
+				*itOriginal = *itLeft;
+				++itOriginal;
+				++itLeft;
+			}
+			while (itRight!= right.end()){
+				*itOriginal = *itRight;
+				++itOriginal;
+				++itRight;
+			}
+		}
 };
 
 #endif
