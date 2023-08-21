@@ -127,9 +127,9 @@ class PmergeMe
 
 		template < typename ContainerPair, typename Container>
 		void createSequence(ContainerPair& cPair, Container& c){
-			int					i = 0;
-			int					iter = 0;
-			int					item;
+			int			i = 0;
+			int			iter = 0;
+			int			item;
 			Container	seq;
 			Container	pend;
 			Container	indexSeq;
