@@ -111,8 +111,6 @@ class PmergeMe
 			int			i = 0;
 			int			jacobIndex = 3;
 			Container	jacobsthalSeq;
-
-			std::cout << "pend size = " << c.size() <<"\n";
 			
 			while (jacobsthal(jacobIndex) < (int)c.size() - 1) {
 				jacobsthalSeq.insert(jacobsthalSeq.begin() + i, jacobsthal(jacobIndex));
@@ -122,10 +120,20 @@ class PmergeMe
 			return jacobsthalSeq;
 		}
 
+		template <  typename Container>
+		bool valExists(Container& c, int val){
+			for (int i = 0; i < (int)c.size(); i++)
+				if (c[i] == val){
+					return true;
+				}
+			return false;
+		}
+
 		template < typename ContainerPair, typename Container>
 		void createSequence(ContainerPair& cPair, Container& c){
 			int					i = 0;
 			int					iter = 0;
+			int					item;
 			Container	seq;
 			Container	pend;
 			Container	indexSeq;
@@ -138,11 +146,6 @@ class PmergeMe
 				it++;
 				i++;
 			}
-			std::cout << "Seq = ";
-			printContainer(seq);
-			std::cout << "\nPend = ";
-			printContainer(pend);
-			std::cout <<"\n";
 
 			if(size < 4){
 				if(size >= 2)
@@ -156,47 +159,26 @@ class PmergeMe
 				indexSeq.push_back(0);
 				indexSeq.push_back(1);
 				Container jacobsthalSequence = createJacobsthalSequence(pend);
-				std::cout << "jacobsthalSequence = ";
-				printContainer(jacobsthalSequence);
-				std::cout <<"\n";
 
-				while (iter <= (int)pend.size()){
-					int item;
-					if (jacobsthalSequence.size() != 0){
-						indexSeq.push_back(jacobsthalSequence[0]);
-						item = pend.at(jacobsthalSequence[0] - 1);
-						std::cout << "j - iter = " << iter << " ,item = " << item;
-						std::cout << " jacobsthalSequence = ";
-						printContainer(jacobsthalSequence);
-						std::cout <<"\n";
-						jacobsthalSequence.erase(jacobsthalSequence.begin());
-					} else {
-						std::cout << "iter = " << iter << "\n";
-						while(valExists(indexSeq, iter))
-							iter++;
-						item = (iter - 1 <= 0) ? pend.at(0) : pend.at(iter - 1);
-						indexSeq.push_back(iter);
-						std::cout << "iter = " << iter << " ,item = " << item;
-					}
+				while (jacobsthalSequence.size() != 0){
+					indexSeq.push_back(jacobsthalSequence[0]);
+					item = pend.at(jacobsthalSequence[0] - 1);
+					jacobsthalSequence.erase(jacobsthalSequence.begin());
 					typename Container::iterator itPos = std::lower_bound(seq.begin(), seq.end(), item);
 					int insertIndex = std::distance(seq.begin(), itPos);
-					std::cout << " insertIndex = " << insertIndex;
-					std::cout << " indexSeq = ";
-					printContainer(indexSeq);
 					seq.insert(seq.begin() + insertIndex, item);
-					std::cout << " seq = ";
-					printContainer(seq);
-					std::cout <<"\n";
-					iter++;
 				}
 
-
-				std::cout << "FinalSeq = ";
-				printContainer(seq);
-				std::cout << "\nPend = ";
-				printContainer(pend);
-				std::cout <<"\n";
-
+				while (iter <= (int)pend.size()){
+					while(valExists(indexSeq, iter))
+						iter++;
+					item = (iter - 1 <= 0) ? pend.at(0) : pend.at(iter - 1);
+					indexSeq.push_back(iter);
+					typename Container::iterator itPos = std::lower_bound(seq.begin(), seq.end(), item);
+					int insertIndex = std::distance(seq.begin(), itPos);
+					seq.insert(seq.begin() + insertIndex, item);
+					iter++;
+				}
 
 				if (straggler != -1){
 					typename Container::iterator itPos = std::lower_bound(seq.begin(), seq.end(), straggler);
@@ -205,6 +187,17 @@ class PmergeMe
 				}
 			}
 			c = seq;
+		}
+
+		template < typename ContainerPair, typename Container>
+		void fordJohnsonMergeInsertionSort(ContainerPair& cPair, Container& cSorted, int *values){
+			stragglerCatching(values);
+
+			std::cout<< "\nsize = " << size << "\n";
+			creatingPairs(values, cPair);
+			sortingPairs(cPair);
+			mergeSort(cPair);
+			createSequence(cPair, cSorted);
 		}
 };
 

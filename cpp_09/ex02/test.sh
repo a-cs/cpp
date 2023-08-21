@@ -7,36 +7,40 @@ echo "\e[1;32mTest 1 - sort 1 number\e[0m"
 valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME 1
 
 echo
-echo "\e[1;32mTest 1 - sort 2 number\e[0m"
+echo "\e[1;32mTest 2 - sort 2 number\e[0m"
 valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME 2 1
 
 echo
-echo "\e[1;32mTest 1 - sort 3 number\e[0m"
+echo "\e[1;32mTest 3 - sort 3 number\e[0m"
 valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME 2 1 3
 
 echo
-echo "\e[1;32mTest 1 - sort 4 number\e[0m"
+echo "\e[1;32mTest 4 - sort 4 number\e[0m"
 valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME 2 0 4 3
 
 echo
-echo "\e[1;32mTest 1 - sort 5 number\e[0m"
+echo "\e[1;32mTest 5 - sort 5 number\e[0m"
 valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME 5 2 0 4 3
 
 echo
-echo "\e[1;32mTest 1 - sort 14 numbers\e[0m"
+echo "\e[1;32mTest 6 - sort 14 numbers\e[0m"
 valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME 94 58 23 95 75 20 33 10 78 0 76 7 70 65
 
 echo
-echo "\e[1;32mTest 2 - sort 15 numbers\e[0m"
+echo "\e[1;32mTest 7 - sort 15 numbers\e[0m"
 valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME 94 58 23 95 75 20 33 10 78 0 76 7 70 65 87
 
-# echo
-# echo "\e[1;32mTest 1 - sort 10 numbers from 0 to 9\e[0m"
-# valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME `shuf -i 0-9 -n 10 | xargs`
+echo
+echo "\e[1;32mTest 8 - sort 100 numbers from 0 to 99\e[0m"
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME `shuf -i 0-99 -n 100 | xargs`
 
-# echo
-# echo "\e[1;32mTest 2 - sort 11 numbers from 0 to 10\e[0m"
-# valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME `shuf -i 0-10 -n 11 | xargs`
+echo
+echo "\e[1;32mTest 9 - sort 1000 numbers from 0 to 999\e[0m"
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME `shuf -i 0-999 -n 1000 | xargs`
+
+echo
+echo "\e[1;32mTest 10 - sort 3000 numbers from 0 to 2999\e[0m"
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./$NAME `shuf -i 0-2999 -n 3000 | xargs`
 
 echo
 echo "\e[1;31mError tests\e[0m"

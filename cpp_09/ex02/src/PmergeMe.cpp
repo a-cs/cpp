@@ -57,15 +57,6 @@ int	PmergeMe::jacobsthal(int n){
 	return jacobsthal(n - 1) + 2 * jacobsthal(n - 2);
 }
 
-bool PmergeMe::valExists(const std::vector<int>& vec, int val){
-	for (int i = 0; i < (int)vec.size(); i++)
-		if (vec[i] == val){
-			std::cout << "Val found = " << val << "\n";
-			return true;
-		}
-	return false;
-}
-
 int PmergeMe::sort(char **input, int *values){
 
 	if(!validateInput(input, values)){
@@ -73,50 +64,17 @@ int PmergeMe::sort(char **input, int *values){
 		return 1;
 	}
 
-	std::cout<< "size = " << size << "\n";
-	std::cout<< "straggler = " << straggler << "\n";
-	for(int i = 0; i < size; i++){
-		std::cout << values[i] << " ";
-	}
+	std::cout << "\n---- Vector Sort ----";
 
-	stragglerCatching(values);
-
-	std::cout<< "\nsize = " << size << "\n";
-	std::cout<< "straggler = " << straggler << "\n";
-
-	std::cout << "\n\nCreating Pairs\n";
-
-	creatingPairs(values, vec);
-
-	std::cout << "Vec Pairs\n";
-	printContainerPair(vec);
-	
-	// std::cout << "\nDec Pairs\n";
-	// printContainerPair(deq);
+	fordJohnsonMergeInsertionSort(vec, vecSorted, values);
+	std::cout << "FinalSeq size= " << vecSorted.size();
+	std::cout << "\n";
 
 
-	std::cout << "\n\nSorting Each Pairs\n";
+	std::cout << "\n\n---- Deque Sort ----";
 
-	sortingPairs(vec);
-
-	std::cout << "Vec Pairs\n";
-	printContainerPair(vec);
-
-	std::cout << "\n\nSorting Pairs by largest value\n";
-
-	mergeSort(vec);
-	std::cout << "Vec Pairs\n";
-	printContainerPair(vec);
-
-	std::cout << "\n\nCreating Sequece\n";
-
-
-	std::vector<int>	vecSorted;
-	createSequence(vec, vecSorted);
-
-	std::cout << "FinalSeq = ";
-	printContainer(vecSorted);
-	std::cout << "\nFinalSeq size= " << vecSorted.size();
+	fordJohnsonMergeInsertionSort(deq, deqSorted, values);
+	std::cout << "FinalSeq size= " << deqSorted.size();
 	std::cout << "\n";
 
 
